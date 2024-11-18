@@ -30,7 +30,7 @@ public class UserServiceTest {
     @Test
     public void checkUserJournalEntriesTest(){
         User user = userRepository.findByUserName("user");
-        assertTrue(!user.getJournalEntries().isEmpty());
+        assertFalse(user.getJournalEntries().isEmpty());
     }
 
     @ParameterizedTest
@@ -46,7 +46,6 @@ public class UserServiceTest {
     @ValueSource(strings = {
             "parag",
             "admin"
-
     })
     public void testUsers(String name){
         assertNotNull(userRepository.findByUserName(name), "failed for: " + name);
@@ -59,4 +58,18 @@ public class UserServiceTest {
         user.setPassword("chirag");
         assertTrue(userService.saveUser(user));
     }
+
+    @Test
+    public void testShowAllUsers(){
+        assertNotNull(userService.showAllUsers());
+    }
+
+    @Test
+    public void testSaveAdminUser(){
+        User user = new User();
+        user.setUserName("admin2");
+        user.setPassword("admin2");
+        assertTrue(userService.saveAdminUser(user));
+    }
+
 }
