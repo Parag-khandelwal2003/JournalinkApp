@@ -1,0 +1,22 @@
+spring:
+  application:
+    name : Journal Link
+  datasource:
+    url : jdbc:postgresql://localhost:5432/journalinkdb
+    username : postgres
+    password : postgres
+    driver-class-name : org.postgresql.Driver
+  jpa:
+    database-platform : org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto : update
+    show-sql : true
+    properties:
+      hibernate:
+        format_sql : true
+        hbm2ddl:
+          auto : update
+          create_indexes : true
+
+server:
+  port : 8080
